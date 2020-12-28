@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BlogProject/BlogProject.iml" filepath="$PROJECT_DIR$/BlogProject/BlogProject.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/FullStack_Blog.iml" filepath="$PROJECT_DIR$/.idea/FullStack_Blog.iml" />
     </modules>
   </component>
 </project>
