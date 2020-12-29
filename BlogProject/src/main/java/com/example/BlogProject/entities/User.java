@@ -17,24 +17,28 @@ import java.util.List;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "USER_ID")
     private Long id;
 
     @Column(name = "USERNAME", unique = true)
+//    @NotBlank(message = "Username is required")
     private String username;
 
     @Column(name = "PASSWORD")
+//    @NotBlank(message = "Password is required")
     private String password;
 
     @Column(name = "EMAIL", unique = true)
+//    @Email
+//    @NotEmpty(message = "Email is required")
     private String email;
 
     @Column(name = "TIMESTAMP")
     private Instant timestamp;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "USER_ID", referencedColumnName = "ID")
+    @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
     @Column(name = "BLOGPOSTS")
     private List<BlogPost> blogPosts = new ArrayList<>();
 }

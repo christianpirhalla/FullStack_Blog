@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.Instant;
 import java.util.Date;
 import java.util.Set;
 
@@ -20,7 +21,7 @@ public class BlogPost {
     @Column(name = "TITLE")
     private String title;
     @Column(name = "TIMESTAMP")
-    private Date timestamp;
+    private Instant timestamp;
     @Column(name = "BLURB")
     private String blurb;
     @Column(name = "FULLTEXT")
@@ -31,12 +32,12 @@ public class BlogPost {
     private String imagelink;
 
     @ManyToMany
-    @JoinTable(name="blogPost_tag",
-            joinColumns = @JoinColumn(name = "blog_id", referencedColumnName = "id"),
-    inverseJoinColumns = @JoinColumn(name = "tag_id", referencedColumnName = "id"))
+    @JoinTable(name="BLOGPOST_TAG",
+            joinColumns = @JoinColumn(name = "BLOG_ID", referencedColumnName = "BLOGPOST_ID"),
+    inverseJoinColumns = @JoinColumn(name = "TAG_ID", referencedColumnName = "BLOGPOST_ID"))
     private Set<Tag> tags;
 
-    @OneToMany
+    @ManyToOne
     @Column(name = "USER")
     private User user;
 }
