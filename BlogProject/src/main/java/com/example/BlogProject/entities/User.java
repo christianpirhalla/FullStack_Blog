@@ -6,33 +6,35 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "USERS")
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "USER_ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private Long id;
 
-    @Column(name = "USERNAME")
-    @Column(unique = true)
+    @Column(name = "USERNAME", unique = true)
     private String username;
 
     @Column(name = "PASSWORD")
     private String password;
 
-    @Column(name = "EMAIL")
-    @Column(unique = true)
+    @Column(name = "EMAIL", unique = true)
     private String email;
 
-    @Column()
+    @Column(name = "TIMESTAMP")
     private Instant timestamp;
 
-    @OneToMany(mappedBy = "Tag", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "USER_ID", referencedColumnName = "ID")
     @Column(name = "BLOGPOSTS")
-    private List<BlogPosts> blogPosts;
+    private List<BlogPost> blogPosts = new ArrayList<>();
 }
