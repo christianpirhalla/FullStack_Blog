@@ -32,7 +32,7 @@ public class User {
     @Column()
     private Instant timestamp;
 
-    @OneToMany(mappedBy = "")
+    @OneToMany(mappedBy = "Tag", cascade = CascadeType.ALL)
     @Column(name = "BLOGPOSTS")
     private List<BlogPosts> blogPosts;
 }
